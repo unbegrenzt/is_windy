@@ -6,8 +6,8 @@ import ResultsList from '@/components/atoms/ResultsList';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import useSearchOSM from '@/hooks/useSearchOSM';
-// import Player from 'lottie-react';
-// import loadingAnimation from '@/animations/loading.json';
+import loadingAnimation from '../../../../public/animations/loading.json';
+import Lottie from "lottie-react";
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = React.useState('');
@@ -16,16 +16,13 @@ const SearchBar: React.FC = () => {
   return (
     <div className="relative w-3/4 lg:max-w-96">
       <div className="flex items-center rounded-full border border-gray-300 p-2.5">
-        {/* {loading ? (
-          <Player
-            autoplay
-            loop
-            animationData={loadingAnimation}
-            className="w-6 h-6 mr-2"
-          />
-        ) : (
-          <FontAwesomeIcon icon={faSearch} className="mr-2" />
-        )} */}
+        {/* {loading ? ( */}
+        <div className='w-6 h-6 mr-2'>
+          <Lottie animationData={loadingAnimation} loop={true} />
+        </div>
+        {/* // ) : (
+        //   <FontAwesomeIcon icon={faSearch} className="mr-2" />
+        // )} */}
         <Input
           type="text"
           placeholder="Search..."
