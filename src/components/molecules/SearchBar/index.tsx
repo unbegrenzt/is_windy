@@ -11,7 +11,7 @@ import useSearchOSM from '@/hooks/useSearchOSM';
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = React.useState('');
-  const { results, loading } = useSearchOSM(query);
+  const { results } = useSearchOSM(query);
 
   return (
     <div className="relative w-3/4 lg:max-w-96">
