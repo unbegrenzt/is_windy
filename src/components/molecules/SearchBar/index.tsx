@@ -6,8 +6,12 @@ import ResultsList from '@/components/atoms/ResultsList';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import useSearchOSM from '@/hooks/useSearchOSM';
-import loadingAnimation from '../../../../public/animations/loading.json';
-import Lottie from "lottie-react";
+
+import dynamic from "next/dynamic";
+
+const LottieAnimation = dynamic(() => import("@/components/atoms/LottieAnimation"), {
+  ssr: false,
+});
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = React.useState('');
@@ -17,9 +21,7 @@ const SearchBar: React.FC = () => {
     <div className="relative w-3/4 lg:max-w-96">
       <div className="flex items-center rounded-full border border-gray-300 p-2.5">
         {/* {loading ? ( */}
-        <div className='w-6 h-6 mr-2'>
-          <Lottie animationData={loadingAnimation} loop={true} />
-        </div>
+        <LottieAnimation />
         {/* // ) : (
         //   <FontAwesomeIcon icon={faSearch} className="mr-2" />
         // )} */}
