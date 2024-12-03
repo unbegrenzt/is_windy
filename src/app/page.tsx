@@ -1,5 +1,5 @@
 import Image from "next/image";
-import SearchBar from "@/components/molecules/SearchBar";
+import SearchBar from "@/app/components/molecules/SearchBar";
 
 export default function Home() {
   return (
