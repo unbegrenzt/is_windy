@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import useSearchOSM from '@/hooks/useSearchOSM';
 import Player from 'lottie-react';
-import loadingAnimation from '@/app/animations/loading.json';
+import loadingAnimation from '@/animations/loading.json';
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = React.useState('');
