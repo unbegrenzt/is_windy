@@ -1,11 +1,11 @@
 "use client";
 
 import React from 'react';
-import Input from '@/app/components/atoms/Input';
-import ResultsList from '@/app/components/atoms/ResultsList';
+import Input from '@/components/atoms/Input';
+import ResultsList from '@/components/atoms/ResultsList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import useSearchOSM from '@/app/hooks/useSearchOSM';
+import useSearchOSM from '@/hooks/useSearchOSM';
 import Player from 'lottie-react';
 import loadingAnimation from '@/app/animations/loading.json';
 

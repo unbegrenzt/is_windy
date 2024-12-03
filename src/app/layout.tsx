@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import '@/app/lib/fontawesome';
+import '@/lib/fontawesome';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
