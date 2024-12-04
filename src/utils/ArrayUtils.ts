@@ -31,13 +31,13 @@ export const transformWeatherData = async (weatherData: WeatherData): Promise<Fo
 };
 export const getTimezoneFromCoordinates = async (latitude: number, longitude: number, defaultTz: string): Promise<string> => {
   try {
-    const response = await fetch(`https://api.geotimezone.com/public/timezone?latitude=${latitude}&longitude=${longitude}`);
+    const response = await fetch(`http://api.geonames.org/timezoneJSON?lat=${latitude}&lng=${longitude}&username=f8jp46kkzu2duku`);
     const data = await response.json();
 
-    const closestTimezone = data?.iana_timezone;
+    const timezoneId = data?.timezoneId;
 
-    if (closestTimezone) {
-      return closestTimezone;
+    if (timezoneId) {
+      return timezoneId;
     } else {
       console.warn('No timezone found for coordinates, using default:', defaultTz);
       return defaultTz;
