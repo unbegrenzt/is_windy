@@ -1,35 +1,25 @@
 "use client";
 
 import React from 'react';
+import { ResultsListProps } from './ResultList.types';
+import useStore from '@/store/useStore';
 
-interface OSMResponseObj {
-  place_id: number;
-  licence: string;
-  osm_type: string;
-  osm_id: number;
-  lat: string;
-  lon: string;
-  category: string;
-  type: string;
-  place_rank: number;
-  importance: number;
-  addresstype: string;
-  name: string;
-  display_name: string;
-  boundingbox: string[];
-}
+const ResultsList: React.FC<ResultsListProps> = ({ results, onResultClick }) => {
+  const setSelectedResult = useStore((state) => state.setSelectedResult);
 
-interface ResultsListProps {
-  results: OSMResponseObj[];
-}
-
-const ResultsList: React.FC<ResultsListProps> = ({ results }) => {
   return (
     <ul>
       {results.map((result) => (
-        <li key={result.place_id} className="p-2 border-b last:border-b-0 text-lg text-[#FAFAFA] cursor-default hover:bg-indigo-500">
+        <button
+          key={result.place_id}
+          className="p-2 border-b last:border-b-0 text-lg text-[#FAFAFA] cursor-pointer hover:bg-indigo-500 text-left w-full rounded-lg rounded-b-none last:rounded-b-lg"
+          onClick={() => {
+            setSelectedResult(result);
+            onResultClick();
+          }}
+        >
           {result.display_name}
-        </li>
+        </button>
       ))}
     </ul>
   );

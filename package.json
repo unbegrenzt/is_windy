@@ -14,10 +14,14 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "browser-geo-tz": "^0.1.2",
+    "dayjs": "^1.11.13",
+    "geo-tz": "^8.1.2",
     "lottie-react": "^2.4.0",
     "next": "15.0.3",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
