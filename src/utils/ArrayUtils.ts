@@ -4,7 +4,6 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 import { ForecastData, WeatherData } from "./Interfaces";
-import { find } from 'browser-geo-tz';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -13,10 +12,10 @@ export const transformWeatherData = async (weatherData: WeatherData): Promise<Fo
   const data = weatherData.hourly;
   const now = dayjs().tz(weatherData.timezone);
 
-  const userTimezone = await getTimezoneFromCoordinates(weatherData.latitude, weatherData.longitude, );
+  const userTimezone = await getTimezoneFromCoordinates(weatherData.latitude, weatherData.longitude, weatherData.timezone);
 
   const forecast = data.time.map((time, index) => {
-    const forecastTime = dayjs(time).tz(userTimezone[0]);
+    const forecastTime = dayjs(time).tz(userTimezone);
     return {
       date: forecastTime.format('DD / MM'),
       time: forecastTime.format('HH:mm'),
@@ -32,11 +31,10 @@ export const transformWeatherData = async (weatherData: WeatherData): Promise<Fo
 };
 export const getTimezoneFromCoordinates = async (latitude: number, longitude: number, defaultTz: string): Promise<string> => {
   try {
-    const response = await fetch(`http://worldtimeapi.org/api/timezone`);
-    const timezones: string[] = await response.json();
+    const response = await fetch(`https://api.geotimezone.com/public/timezone?latitude=${latitude}&longitude=${longitude}`);
+    const data = await response.json();
 
-    // Encuentra la zona horaria más cercana basándote en las coordenadas.
-    const closestTimezone = timezones.find(tz => tz.includes(latitude.toFixed(1)) && tz.includes(longitude.toFixed(1)));
+    const closestTimezone = data?.iana_timezone;
 
     if (closestTimezone) {
       return closestTimezone;
