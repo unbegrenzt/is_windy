@@ -46,19 +46,20 @@ const WeatherCard: React.FC<OSMResponseObj> = ({ display_name, lat, lon }) => {
         <LoadingAnimationFullNoSSR />
       ) : (
         <>
-          {forecastData
-            .filter((data) => data.isNow)
-            .map((data) => (
-              <div key={data.time}>
-                <h2 className='text-2xl text-center'>{display_name}</h2>
-                <div className='flex items-center justify-center'>
-                  <AnimationWeather forecastData={data} />
+          {Array.isArray(forecastData) &&
+            forecastData
+              .filter((data) => data.isNow)
+              .map((data) => (
+                <div key={data.time}>
+                  <h2 className='text-2xl text-center'>{display_name}</h2>
+                  <div className='flex items-center justify-center'>
+                    <AnimationWeather forecastData={data} />
+                  </div>
+                  <p className='text-xl font-bold text-center'>{data.temperature}</p>
+                  <p className='text-xl font-bold text-center'>{data.humidity} (Humedad)</p>
+                  <DescriptionItem forecastData={data} />
                 </div>
-                <p className='text-xl font-bold text-center'>{data.temperature}</p>
-                <p className='text-xl font-bold text-center'>{data.humidity} (Humedad)</p>
-                <DescriptionItem forecastData={data} />
-              </div>
-            ))}
+              ))}
         </>
       )}
     </>

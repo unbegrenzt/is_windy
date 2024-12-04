@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
+    "baseUrl": "./",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -22,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/__tests__/app/layout.test.jsx", "src/components/atoms/ResultsList/ResultsList.test.jsx", "src/components/organisms/WeatherCard/WeatherCard.test.jsx", "src/utils/ArrayUtils.test.js"],
   "exclude": ["node_modules"]
 }

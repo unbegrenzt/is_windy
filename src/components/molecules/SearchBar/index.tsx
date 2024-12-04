@@ -28,7 +28,7 @@ const SearchBar: React.FC = () => {
         {loading ? (
           <LoadingAnimationNoSSR />
         ) : (
-          <FontAwesomeIcon icon={faSearch} className="mr-2" />
+          <FontAwesomeIcon icon={faSearch} className="mr-2" data-testid="search-icon" />
         )}
         <Input
           type="text"

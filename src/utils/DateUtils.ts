@@ -16,7 +16,7 @@ const timeZones: string[] = [
   "Pacific/Auckland"
 ];
 
-const getUTCOffset = (timeZone: string): number => {
+export const getUTCOffset = (timeZone: string): number => {
   const now = new Date();
   const tzString = now.toLocaleString('en-US', { timeZone });
   const localString = now.toLocaleString('en-US');
@@ -24,7 +24,7 @@ const getUTCOffset = (timeZone: string): number => {
   return diff;
 };
 
-const findEquivalentTimeZone = (timeZone: string): string => {
+export const findEquivalentTimeZone = (timeZone: string): string => {
   const targetOffset = getUTCOffset(timeZone);
 
   for (const tz of timeZones) {
