@@ -13,8 +13,8 @@ const Input: FC<InputProps> = ({ label, ...props }) => {
       <input className="
         border-none outline-none
         flex-1 bg-transparent
-        text-white border-b
-        border-white" {...props} />
+        text-black dark:text-white border-b
+        border-black dark:border-white" {...props} />
     </>
   );
 };
